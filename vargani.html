@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Vargani Collection</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="header-card">
+
+<h2>
+Vargani Collection
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<input
+id="building"
+type="text"
+placeholder="Building Name">
+
+<input
+id="wing"
+type="text"
+placeholder="Wing">
+
+<input
+id="roomNo"
+inputmode="numeric"
+placeholder="Room Number">
+
+<input
+id="donorName"
+type="text"
+placeholder="Donor Name">
+
+<input
+id="mobile"
+maxlength="10"
+inputmode="numeric"
+placeholder="Mobile Number (Optional)">
+
+<input
+id="amount"
+type="number"
+placeholder="Amount">
+
+<select id="paymentMode">
+
+<option value="">
+Payment Mode
+</option>
+
+<option>
+Cash
+</option>
+
+<option>
+UPI
+</option>
+
+</select>
+
+<select id="status">
+
+<option>
+Paid
+</option>
+
+<option>
+Pending
+</option>
+
+</select>
+
+<label class="checkbox-row">
+
+<input
+type="checkbox"
+id="sendWhatsapp"
+checked>
+
+Send WhatsApp Receipt
+
+</label>
+
+<button
+onclick="saveVargani()">
+
+💾 Save Collection
+
+</button>
+
+</div>
+
+<br>
+
+<button onclick="window.location.href='home.html'">
+Back To Home Page
+</button>
+
+<script src="app.js"></script>
+
+<script>
+checkLogin();
+loadSizeReport();
+</script>
+
+</body>
+</html>
