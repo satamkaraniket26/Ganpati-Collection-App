@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Political Collection</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="header-card">
+
+<h2>
+🏛️ Political Collection
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<input
+id="leaderName"
+placeholder="Leader Name">
+
+<input
+id="party"
+placeholder="Party Name">
+
+<input
+id="mobile"
+placeholder="Mobile Number (Optional)">
+
+<input
+id="amount"
+type="number"
+placeholder="Amount">
+
+<input
+id="remarks"
+placeholder="Remarks">
+
+<label class="checkbox-row">
+
+<input
+type="checkbox"
+id="sendWhatsapp"
+checked>
+
+Send WhatsApp Receipt
+
+</label>
+
+<button
+onclick="savePolitical()">
+
+💾 Save Collection
+
+</button>
+
+</div>
+
+<br>
+
+<div class="back-new-entry">
+
+<button
+onclick="location.href='new-entry.html'">
+
+📂 Back To New Entry
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

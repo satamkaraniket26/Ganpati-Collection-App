@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Universal Search</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="header-card">
+
+<h2>
+🔍 Universal Search
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<input
+id="searchText"
+placeholder="Receipt No / Name / Mobile / Building">
+
+<button
+onclick="searchRecords()">
+
+🔍 Search
+
+</button>
+
+</div>
+
+<div id="searchResults">
+
+</div>
+
+<br>
+
+<div class="back-report">
+
+<button
+onclick="location.href='reports.html'">
+
+📊 Back To Reports
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

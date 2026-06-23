@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Expenses</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="header-card">
+
+<h2>
+💸 Expenses Entry
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<select id="category">
+
+<option value="">
+Select Category
+</option>
+
+<option>
+Decoration
+</option>
+
+<option>
+Lighting
+</option>
+
+<option>
+Sound System
+</option>
+
+<option>
+Printing
+</option>
+
+<option>
+Food
+</option>
+
+<option>
+Security
+</option>
+
+<option>
+Transport
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+<input
+id="vendorName"
+placeholder="Vendor Name">
+
+<input
+id="amount"
+type="number"
+placeholder="Amount">
+
+<input
+id="remarks"
+placeholder="Remarks">
+
+<button
+onclick="saveExpense()">
+
+💾 Save Expense
+
+</button>
+
+</div>
+
+<br>
+
+<div class="back-new-entry">
+
+<button
+onclick="location.href='new-entry.html'">
+
+📂 Back To New Entry
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

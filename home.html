@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Collection Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadTodayCollection();">
+
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+</div>
+
+<div class="header-card">
+    <h1>॥ मीरारोडचा महाराजा ॥</h1>
+    <h2>Collection 2026</h2>
+    <p id="welcomeUser"></p>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="dashboard-grid">
+
+    <div class="stat-card">
+        <h3>💰 Today's Collection</h3>
+        <h1 id="todayCollection">₹0</h1>
+    </div>
+
+    <div class="stat-card">
+        <h3>📄 Today's Entries</h3>
+        <h1 id="todayEntries">0</h1>
+    </div>
+
+    <div class="stat-card">
+        <h3>🏦 Today's Balance</h3>
+        <h1 id="todayBalance">₹0</h1>
+    </div>
+
+    <div class="stat-card">
+        <h3>👥 Active Volunteers</h3>
+        <h1 id="todayVolunteers">0</h1>
+    </div>
+
+</div>
+
+<br>
+
+<!-- Main Menu -->
+<div class="menu-grid">
+
+    <button class="menu-btn" onclick="location.href='new-entry.html'">
+        📂<br>
+        New Entry
+    </button>
+
+    <button class="menu-btn" onclick="location.href='reports.html'">
+        📊<br>
+        Reports
+    </button>
+
+</div>
+
+<div class="logout-row">
+
+    <button class="logout-btn" onclick="logout()">
+        🚪 Logout
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
