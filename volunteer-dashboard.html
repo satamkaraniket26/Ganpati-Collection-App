@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Volunteer Dashboard</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="loadVolunteerDashboard()">
+
+<div class="header-card">
+
+<h2>
+🏆 Volunteer Dashboard
+</h2>
+
+</div>
+
+<div id="volunteerList">
+
+</div>
+
+<br>
+
+<button
+class="export-btn"
+onclick="exportVolunteerDashboard()">
+
+📥 Export Excel
+
+</button>
+
+<br>
+
+<br>
+
+<div class="back-report">
+
+<button
+onclick="location.href='reports.html'">
+
+📊 Back To Reports
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Receipt Lookup</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="header-card">
+
+<h2>
+🧾 Receipt Lookup
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<input
+id="receiptNo"
+placeholder="Enter Receipt No">
+
+<button
+onclick="lookupReceipt()">
+
+🔍 Search Receipt
+
+</button>
+
+</div>
+
+<div id="receiptResult">
+
+</div>
+
+<br>
+
+<div class="back-reports">
+
+<button
+onclick="location.href='reports.html'">
+
+📊 Back To Reports
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

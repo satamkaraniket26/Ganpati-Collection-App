@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<div class="page-logo">
+    <img src="logo.png" alt="Mandal Logo">
+    </div>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Vargani Collection</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadBuildings();">
+
+<div class="header-card">
+
+<h2>
+Vargani Collection
+</h2>
+
+</div>
+
+<div class="form-card">
+
+<select id="building" onchange="loadWings()">
+
+<option value="">
+Select Building
+</option>
+
+</select>
+
+<select id="wing">
+
+<option value="">
+Select Wing
+</option>
+
+</select>
+
+<input
+id="roomNo"
+type="number"
+placeholder="Room Number">
+
+<input
+id="donorName"
+type="text"
+placeholder="Donor Name">
+
+<input
+id="mobile"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+placeholder="Mobile Number (Optional)"
+oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+
+<input
+id="amount"
+type="number"
+placeholder="Amount">
+
+<select id="paymentMode">
+
+<option value="">
+Payment Mode
+</option>
+
+<option>
+Cash
+</option>
+
+<option>
+UPI
+</option>
+
+</select>
+
+<select id="status">
+
+<option>
+Paid
+</option>
+
+<option>
+Pending
+</option>
+
+</select>
+
+<label class="checkbox-row">
+
+<input
+type="checkbox"
+id="sendWhatsapp"
+checked>
+
+Send WhatsApp Receipt
+
+</label>
+
+<button
+onclick="saveVargani()">
+
+💾 Save Collection
+
+</button>
+
+</div>
+
+<br>
+
+<div class="back-new-entry">
+
+<button
+onclick="location.href='new-entry.html'">
+
+📂 Back To New Entry
+
+</button>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+checkLogin();
+loadSizeReport();
+</script>
+
+</body>
+</html>
