@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Recovery Collection</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadBuildings();">
+
+<div class="app-layout">
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="logo.png" alt="Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="grand-dashboard.html">Grand Dashboard</a>
+
+            <button class="dropdown-btn">
+                Reports ▼
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">Daily Report</a>
+
+                <a href="society-summary.html">Society Summary</a>
+
+                <a href="universal-search.html">Universal Search</a>
+
+                <a href="export.html">Export</a>
+
+            </div>
+
+            <a href="receipt-lookup.html">Receipt Lookup</a>
+
+            <a href="volunteer-dashboard.html">Volunteer Dashboard</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <h2>Recovery Collection</h2>
+
+            <div class="user-box" id="welcomeUser"></div>
+
+        </div>
+
+        <div class="page-header">
+
+            <h2>Recovery Collection Entry</h2>
+
+            <p>
+                Record recovered collections from pending contributors.
+            </p>
+
+        </div>
+
+        <div class="content-card">
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Recovery Information
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Building</label>
+
+                        <select
+                            id="building"
+                            onchange="loadWings()"
+                            required>
+
+                            <option value="">Select Building</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Wing</label>
+
+                        <select id="wing">
+
+                            <option value="">Select Wing</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Room Number</label>
+
+                        <input
+                            id="roomNo"
+                            type="number"
+                            placeholder="Enter Room Number">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Donor Name</label>
+
+                        <input
+                            id="donorName"
+                            type="text"
+                            placeholder="Enter Donor Name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Mobile Number</label>
+
+                        <input
+                            id="mobile"
+                            maxlength="10"
+                            inputmode="numeric"
+                            placeholder="Enter Mobile Number"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Recovered Amount</label>
+
+                        <input
+                            id="recoveredAmount"
+                            type="number"
+                            placeholder="Enter Amount"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Receipt Options
+
+                </div>
+
+                <div class="checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="sendWhatsapp"
+                        checked>
+
+                    <label for="sendWhatsapp">
+
+                        Send WhatsApp Receipt
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="location.href='home.html'">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="saveRecovery()">
+
+                    Save Recovery
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">Please Wait...</h3>
+
+        <p>Processing Request</p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

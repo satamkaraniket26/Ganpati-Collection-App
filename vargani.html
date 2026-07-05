@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vargani Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadBuildings();">
+
+<div class="app-layout">
+
+    <!-- Sidebar Overlay -->
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="logo.png" alt="Mandal Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="grand-dashboard.html">
+                Grand Dashboard
+            </a>
+
+            <button class="dropdown-btn">
+                Reports ▼
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">
+                    Daily Report
+                </a>
+
+                <a href="society-summary.html">
+                    Society Summary
+                </a>
+
+                <a href="universal-search.html">
+                    Universal Search
+                </a>
+
+                <a href="export.html">
+                    Export
+                </a>
+
+            </div>
+
+            <a href="receipt-lookup.html">
+                Receipt Lookup
+            </a>
+
+            <a href="volunteer-dashboard.html">
+                Volunteer Dashboard
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+            <h2>Vargani Collection</h2>
+
+            <div class="user-box" id="welcomeUser"></div>
+
+        </div>
+
+        <!-- Page Header -->
+
+        <div class="page-header">
+
+            <h2>Vargani Collection Entry</h2>
+
+            <p>
+
+                Record a new Vargani collection from society members. All entries are securely stored in the central collection register.
+
+            </p>
+
+        </div>
+
+        <!-- Main Card -->
+
+        <div class="content-card">
+
+            <!-- Donor Information -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Donor Information
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Building *</label>
+
+                        <select
+                            id="building"
+                            onchange="loadWings()">
+
+                            <option value="">
+                                Select Building
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Wing *</label>
+
+                        <select id="wing">
+
+                            <option value="">
+                                Select Wing
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Room Number *</label>
+
+                        <input
+                            id="roomNo"
+                            type="number"
+                            placeholder="Enter Room Number">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Donor Name *</label>
+
+                        <input
+                            id="donorName"
+                            type="text"
+                            placeholder="Enter Donor Name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Mobile Number</label>
+
+                        <input
+                            id="mobile"
+                            placeholder="10 Digit Mobile Number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Amount *</label>
+
+                        <input
+                            id="amount"
+                            type="number"
+                            placeholder="Enter Amount">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Payment Information -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Payment Information
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Payment Mode *</label>
+
+                        <select id="paymentMode">
+
+                            <option value="">
+                                Select Payment Mode
+                            </option>
+
+                            <option>
+                                Cash
+                            </option>
+
+                            <option>
+                                UPI
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Status</label>
+
+                        <select id="status">
+
+                            <option>
+                                Paid
+                            </option>
+
+                            <option>
+                                Pending
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- WhatsApp -->
+
+            <div class="checkbox-row">
+
+                <input
+                    type="checkbox"
+                    id="sendWhatsapp"
+                    checked>
+
+                <label for="sendWhatsapp">
+
+                    Send WhatsApp Receipt
+
+                </label>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="location.href='home.html'">
+
+                    Cancel
+
+                </button>
+
+                <button
+id="saveBtn"
+class="primary-btn"
+onclick="saveVargani()">
+
+Save Collection
+
+</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">Please Wait...</h3>
+
+        <p>Processing Request</p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

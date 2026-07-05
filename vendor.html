@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vendor Collection</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="app-layout">
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="logo.png" alt="Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="grand-dashboard.html">Grand Dashboard</a>
+
+            <button class="dropdown-btn">
+
+                Reports ▼
+
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">Daily Report</a>
+
+                <a href="society-summary.html">Society Summary</a>
+
+                <a href="universal-search.html">Universal Search</a>
+
+                <a href="export.html">Export</a>
+
+            </div>
+
+            <a href="receipt-lookup.html">Receipt Lookup</a>
+
+            <a href="volunteer-dashboard.html">Volunteer Dashboard</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <button
+            class="menu-btn"
+            onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+            <h2>Vendor Collection</h2>
+
+            <div class="user-box" id="welcomeUser"></div>
+
+        </div>
+
+        <div class="page-header">
+
+            <h2>Vendor Collection Entry</h2>
+
+            <p>
+
+                Record contributions received from vendors and business establishments.
+
+            </p>
+
+        </div>
+
+        <div class="content-card">
+
+            <!-- Vendor Information -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Vendor Information
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Shop Name</label>
+
+                        <input
+                        id="shopName"
+                        type="text"
+                        placeholder="Enter Shop Name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Owner Name</label>
+
+                        <input
+                        id="ownerName"
+                        type="text"
+                        placeholder="Enter Owner Name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Mobile Number</label>
+
+                        <input
+                        id="mobile"
+                        maxlength="10"
+                        inputmode="numeric"
+                        placeholder="Enter Mobile Number"
+                        oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Collection Amount</label>
+
+                        <input
+                        id="amount"
+                        type="number"
+                        placeholder="Enter Amount">
+
+                    </div>
+
+                    <div class="form-group" style="grid-column:1/-1;">
+
+                        <label>Address</label>
+
+                        <textarea
+                        id="address"
+                        rows="4"
+                        placeholder="Enter Shop Address"></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Receipt Options -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Receipt Options
+
+                </div>
+
+                <div class="checkbox-row">
+
+                    <input
+                    type="checkbox"
+                    id="sendWhatsapp"
+                    checked>
+
+                    <label for="sendWhatsapp">
+
+                        Send WhatsApp Receipt
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-row">
+
+                <button
+                class="secondary-btn"
+                onclick="location.href='home.html'">
+
+                    Cancel
+
+                </button>
+
+                <button
+                class="primary-btn"
+                onclick="saveVendor()">
+
+                    Save Collection
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">Please Wait...</h3>
+
+        <p>Processing Request</p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
