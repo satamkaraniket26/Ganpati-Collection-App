@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Expense Management</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin()">
+
+<div class="app-layout">
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="logo.png" alt="Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html">Home</a>
+
+            <a href="grand-dashboard.html">Grand Dashboard</a>
+
+            <button class="dropdown-btn">
+                Reports ▼
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">Daily Report</a>
+
+                <a href="society-summary.html">Society Summary</a>
+
+                <a href="universal-search.html">Universal Search</a>
+
+                <a href="export.html">Export</a>
+
+            </div>
+
+            <a href="receipt-lookup.html">Receipt Lookup</a>
+
+            <a href="volunteer-dashboard.html">Volunteer Dashboard</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <h2>Expense Management</h2>
+
+            <div class="user-box" id="welcomeUser"></div>
+
+        </div>
+
+        <div class="page-header">
+
+            <h2>New Expense Entry</h2>
+
+            <p>
+                Record expenses incurred during the Ganesh Festival.
+            </p>
+
+        </div>
+
+        <div class="content-card">
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Expense Details
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Category</label>
+
+                        <select
+                            id="category"
+                            required>
+
+                            <option value="">Select Category</option>
+
+                            <option>Decoration</option>
+
+                            <option>Lighting</option>
+
+                            <option>Sound System</option>
+
+                            <option>Printing</option>
+
+                            <option>Food</option>
+
+                            <option>Security</option>
+
+                            <option>Transport</option>
+
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Vendor Name</label>
+
+                        <input
+                            id="vendorName"
+                            type="text"
+                            placeholder="Enter Vendor Name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Amount</label>
+
+                        <input
+                            id="amount"
+                            type="number"
+                            placeholder="Enter Amount"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Remarks</label>
+
+                        <input
+                            id="remarks"
+                            type="text"
+                            placeholder="Optional Remarks">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-section">
+
+                <div class="section-heading">
+
+                    Actions
+
+                </div>
+
+                <div class="button-row">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="location.href='home.html'">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveExpense()">
+
+                        Save Expense
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">Please Wait...</h3>
+
+        <p>Processing Request</p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
