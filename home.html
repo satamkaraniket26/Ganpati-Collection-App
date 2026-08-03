@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Collection Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadHomeDashboard();loadRecentActivity();">
+
+<div class="app-layout">
+
+    <!-- Overlay -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="logo.png" alt="Mandal Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html" class="active">
+                Home
+            </a>
+
+            <a href="grand-dashboard.html">
+                Grand Dashboard
+            </a>
+
+            <button class="dropdown-btn">
+                Reports ▼
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">
+                    Daily Report
+                </a>
+
+                <a href="society-summary.html">
+                    Society Summary
+                </a>
+
+                <a href="universal-search.html">
+                    Universal Search
+                </a>
+
+                <a href="export.html">
+                    Export
+                </a>
+
+            </div>
+
+            <a href="receipt-lookup.html">
+                Receipt Lookup
+            </a>
+
+            <a href="volunteer-dashboard.html">
+                Volunteer Dashboard
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+            <h2>Collection Dashboard</h2>
+
+            <div class="user-box" id="welcomeUser"></div>
+
+        </div>
+
+        <!-- Page Header -->
+
+        <div class="page-header">
+
+            <h2>Collection Dashboard</h2>
+
+            <p>
+
+                Monitor collections, volunteers and daily activities from one central dashboard.
+
+            </p>
+
+        </div>
+
+        <!-- Overall Statistics -->
+
+        <div class="section-title">
+
+            <h2>Overview</h2>
+
+            <p>Overall collection statistics</p>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="stat-card">
+
+                <span>Total Collection</span>
+
+                <h2 id="totalCollection">₹0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Today's Collection</span>
+
+                <h2 id="todayCollection">₹0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Volunteers</span>
+
+                <h2 id="volunteerCount">0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Pending Recovery</span>
+
+                <h2 id="pendingRecovery">₹0</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+
+        <div class="section-title">
+
+            <h2>Quick Actions</h2>
+
+            <p>Create new collection entries</p>
+
+        </div>
+
+        <div class="action-grid">
+
+            <button
+                class="action-btn"
+                onclick="location.href='vargani.html'">
+
+                <h3>Vargani</h3>
+
+                <span>Create Collection Entry</span>
+
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="location.href='political.html'">
+
+                <h3>Political</h3>
+
+                <span>Add Political Donation</span>
+
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="location.href='vendor.html'">
+
+                <h3>Vendor</h3>
+
+                <span>Add Vendor Collection</span>
+
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="location.href='recovery.html'">
+
+                <h3>Recovery</h3>
+
+                <span>Manage Pending Recovery</span>
+
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="location.href='expenses.html'">
+
+                <h3>Expenses</h3>
+
+                <span>Add Expense Entry</span>
+
+            </button>
+
+        </div>
+
+        <!-- Today's Summary -->
+
+        <div class="section-title">
+
+            <h2>Today's Summary</h2>
+
+            <p>Quick overview of today's work</p>
+
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="stat-card">
+
+                <span>Today's Entries</span>
+
+                <h2 id="todayEntries">0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Cash Collection</span>
+
+                <h2 id="cashCollection">₹0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Online Collection</span>
+
+                <h2 id="onlineCollection">₹0</h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>Today's Expenses</span>
+
+                <h2 id="todayExpense">₹0</h2>
+
+            </div>
+
+        </div>
+
+        <!-- Recent Activity -->
+
+        <div class="recent-section">
+
+            <div class="recent-header">
+
+                <h2>Recent Activity</h2>
+
+                <a href="universal-search.html">
+
+                    View All
+
+                </a>
+
+            </div>
+
+            <div
+                class="activity-list"
+                id="recentActivity">
+
+                <div class="activity-item">
+
+                    <div>
+
+                        <h4>Loading recent entries...</h4>
+
+                        <p>Please wait while records are being loaded.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Pending Recovery -->
+
+        <div class="recent-section">
+
+            <div class="recent-header">
+
+                <h2>Pending Recoveries</h2>
+
+                <a href="recovery.html">
+
+                    Manage
+
+                </a>
+
+            </div>
+
+            <div class="activity-list">
+
+                <div class="activity-item">
+
+                    <div>
+
+                        <h4>No Pending Recoveries</h4>
+
+                        <p>
+
+                            All recoveries have been completed successfully.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">Please Wait...</h3>
+
+        <p>Processing Request</p>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
