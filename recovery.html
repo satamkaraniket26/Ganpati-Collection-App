@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="logo.png">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Recovery Collection</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadPendingRecovery();">
+
+<div class="app-layout">
+
+    <!-- Sidebar Overlay -->
+
+    <div
+        class="sidebar-overlay"
+        onclick="toggleSidebar()">
+    </div>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img
+                src="logo.png"
+                alt="Mandal Logo">
+
+            <h2>Ganesh Collection</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="grand-dashboard.html">
+                Grand Dashboard
+            </a>
+
+            <button class="dropdown-btn">
+                Reports ▼
+            </button>
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">
+                    Daily Report
+                </a>
+
+                <a href="society-summary.html">
+                    Society Summary
+                </a>
+
+                <a href="universal-search.html">
+                    Universal Search
+                </a>
+
+                <a href="export.html">
+                    Export
+                </a>
+
+            </div>
+
+            <a href="receipt-lookup.html">
+                Receipt Lookup
+            </a>
+
+            <a href="volunteer-dashboard.html">
+                Volunteer Dashboard
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <!-- Topbar -->
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+            <h2>
+                Recovery Collection
+            </h2>
+
+            <div
+                class="user-box"
+                id="welcomeUser">
+            </div>
+
+        </div>
+
+        <!-- Page Header -->
+
+        <div class="page-header">
+
+            <h2>
+                Recovery Collection
+            </h2>
+
+            <p>
+                Recover pending donations and automatically update
+                the original collection records.
+            </p>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="content-card">
+
+            <div class="card-section">
+
+                <div class="search-header">
+
+                    <div>
+
+                        <h3>
+                            Pending Recoveries
+                        </h3>
+
+                        <p>
+                            Search by Donor Name, Building,
+                            Receipt Number or Mobile.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="recoverySearch"
+                        placeholder="Search pending recovery..."
+                        onkeyup="filterRecoveryList()">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Pending List -->
+
+        <div class="content-card">
+
+            <div class="card-section">
+
+                <div class="section-heading">
+                    Pending List
+                </div>
+
+                <div class="pending-count">
+
+                    Pending Donors
+
+                    <span id="pendingCount">
+                        0
+                    </span>
+
+                </div>
+
+                <div id="pendingRecoveryList">
+
+                    <div
+                        style="
+                        padding:30px;
+                        text-align:center;
+                        color:#6B7280;
+                        ">
+
+                        Loading pending recoveries...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Recovery Form -->
+
+        <div
+            class="content-card"
+            id="recoveryForm"
+            style="display:none;">
+
+            <!-- Recovery Details -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+                    Recovery Details
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label id="buildingLabel">
+                            Building
+                        </label>
+
+                        <input
+                            id="building"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label id="wingLabel">
+                            Wing
+                        </label>
+
+                        <input
+                            id="wing"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label id="roomLabel">
+                            Room Number
+                        </label>
+
+                        <input
+                            id="roomNo"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Donor Name
+                        </label>
+
+                        <input
+                            id="donorName"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile
+                        </label>
+
+                        <input
+                            id="mobile"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Expected Amount
+                        </label>
+
+                        <input
+                            id="expectedAmount"
+                            readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Recovered Amount
+                        </label>
+
+                        <input
+                            id="recoveredAmount"
+                            type="number"
+                            placeholder="Enter Amount">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Mode
+                        </label>
+
+                        <select id="paymentMode">
+
+                            <option value="">
+                                Select Payment Mode
+                            </option>
+
+                            <option>
+                                Cash
+                            </option>
+
+                            <option>
+                                UPI
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- Hidden Fields -->
+
+                <input
+                    type="hidden"
+                    id="originalReceipt">
+
+                <input
+                    type="hidden"
+                    id="typeSource">
+
+                <input
+                    type="hidden"
+                    id="originalName">
+
+                <input
+                    type="hidden"
+                    id="status"
+                    value="Paid">
+
+            </div>
+
+            <!-- Remark -->
+
+            <div class="card-section">
+
+                <div class="section-heading">
+                    Remark
+                </div>
+
+                <div class="form-group">
+
+                    <label for="recoveryRemark">
+                        Remark
+                    </label>
+
+                    <textarea
+                        id="recoveryRemark"
+                        name="remark"
+                        rows="3"
+                        placeholder="Enter remark (optional)"></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- WhatsApp -->
+
+            <div class="card-section">
+
+                <div class="checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="sendWhatsapp">
+
+                    <label for="sendWhatsapp">
+
+                        Send WhatsApp Receipt
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="location.href='home.html'">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    id="saveBtn"
+                    class="primary-btn"
+                    onclick="saveRecovery()">
+
+                    Save Recovery
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- Loading Overlay -->
+
+<div
+    id="loadingOverlay"
+    class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+        <h3 id="loadingText">
+            Please Wait...
+        </h3>
+
+        <p>
+            Processing Request
+        </p>
+
+    </div>
+
+</div>
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
