@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grand Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="checkLogin();loadDashboard();">
+
+<div class="app-layout">
+
+    <!-- =====================================================
+         SIDEBAR OVERLAY
+         ===================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        onclick="toggleSidebar()">
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img
+                src="logo.png"
+                alt="Mandal Logo">
+
+            <h2>
+                Ganesh Collection
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+
+            <a
+                href="grand-dashboard.html"
+                class="active">
+
+                Grand Dashboard
+
+            </a>
+
+
+            <button class="dropdown-btn">
+
+                Reports ▼
+
+            </button>
+
+
+            <div class="dropdown-container">
+
+                <a href="daily-report.html">
+                    Daily Report
+                </a>
+
+                <a href="society-summary.html">
+                    Society Summary
+                </a>
+
+                <a href="universal-search.html">
+                    Universal Search
+                </a>
+
+                <a href="export.html">
+                    Export
+                </a>
+
+            </div>
+
+
+            <a href="receipt-lookup.html">
+                Receipt Lookup
+            </a>
+
+
+            <a href="volunteer-dashboard.html">
+                Volunteer Dashboard
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+             ================================================= -->
+
+        <div class="topbar">
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+
+            <h2>
+                Grand Dashboard
+            </h2>
+
+
+            <div
+                class="user-box"
+                id="welcomeUser">
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <div class="page-header">
+
+            <h2>
+                Overall Collection Summary
+            </h2>
+
+            <p>
+                View complete collection statistics of the Mandal.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             GRAND TOTAL
+             ================================================= -->
+
+        <div class="grand-total-card">
+
+            <span>
+                Grand Total (Paid + Pending)
+            </span>
+
+
+            <h1 id="grandTotal">
+                ₹0
+            </h1>
+
+
+            <p>
+                Total Collection Target
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             COLLECTION OVERVIEW
+             ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Collection Overview
+            </h2>
+
+            <p>
+                Overall financial summary
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- GRAND COLLECTION -->
+
+            <div class="stat-card">
+
+                <span>
+                    Grand Collection
+                </span>
+
+                <h2 id="grandCollection">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- NET BALANCE -->
+
+            <div class="stat-card">
+
+                <span>
+                    Net Balance
+                </span>
+
+                <h2 id="netBalance">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- EXPENSE -->
+
+            <div class="stat-card">
+
+                <span>
+                    Total Expenses
+                </span>
+
+                <h2 id="expenseTotal">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- PENDING -->
+
+            <div class="stat-card">
+
+                <span>
+                    Pending Recovery
+                </span>
+
+                <h2 id="pendingVargani">
+                    ₹0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             COLLECTION BREAKDOWN
+             ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Collection Breakdown
+            </h2>
+
+            <p>
+                Category-wise collection
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- =================================================
+                 VARGANI
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Vargani
+                </span>
+
+                <h2 id="varganiTotal">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- =================================================
+                 POLITICAL
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Political
+                </span>
+
+                <h2 id="politicalTotal">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- =================================================
+                 VENDOR
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Vendor
+                </span>
+
+                <h2 id="vendorTotal">
+                    ₹0
+                </h2>
+
+            </div>
+
+
+            <!-- =================================================
+                 DONATION
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Donation
+                </span>
+
+                <h2 id="donationTotal">
+                    ₹0
+                </h2>
+
+                <p>
+                    General donations received by the Mandal
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 RECOVERY
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Recovery
+                </span>
+
+                <h2 id="recoveryTotal">
+                    ₹0
+                </h2>
+
+                <br>
+
+                <p>
+                    Note: This amount is already included
+                    in the original collection.
+                </p>
+
+                <span>
+                    It is displayed separately only to show
+                    total recovered amount.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PAYMENT SUMMARY
+             ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Payment Summary
+            </h2>
+
+            <p>
+                Overall collection based on payment mode
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- =================================================
+                 CASH
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Cash Collection
+                </span>
+
+                <h2 id="cashCollection">
+                    ₹0
+                </h2>
+
+                <p>
+                    Vargani + Political + Vendor + Donation
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 UPI
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Online / UPI Collection
+                </span>
+
+                <h2 id="onlineCollection">
+                    ₹0
+                </h2>
+
+                <p>
+                    Vargani + Political + Vendor + Donation
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             CURRENT AVAILABLE BALANCE
+             ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Current Available Balance
+            </h2>
+
+            <p>
+                Collection available after deducting expenses
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- =================================================
+                 CURRENT CASH
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Current Cash Balance
+                </span>
+
+                <h2 id="currentCashBalance">
+                    ₹0
+                </h2>
+
+                <p>
+                    Cash Collection − Cash Expenses
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CURRENT UPI
+                 ================================================= -->
+
+            <div class="stat-card">
+
+                <span>
+                    Current UPI Balance
+                </span>
+
+                <h2 id="currentUPIBalance">
+                    ₹0
+                </h2>
+
+                <p>
+                    UPI Collection − UPI Expenses
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             OVERALL STATISTICS
+             ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Statistics
+            </h2>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- TOTAL ENTRIES -->
+
+            <div class="stat-card">
+
+                <span>
+                    Total Entries
+                </span>
+
+                <h2 id="totalEntries">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- VOLUNTEERS -->
+
+            <div class="stat-card">
+
+                <span>
+                    Total Volunteers
+                </span>
+
+                <h2 id="volunteerCount">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             EXPORT
+             ================================================= -->
+
+        <div class="recent-section">
+
+            <div class="recent-header">
+
+                <h2>
+                    Export Dashboard
+                </h2>
+
+                <p>
+                    Download complete dashboard summary.
+                </p>
+
+            </div>
+
+
+            <div class="button-row">
+
+
+                <button
+                    class="primary-btn"
+                    onclick="exportGrandDashboard()">
+
+                    Export Dashboard
+
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="location.href='home.html'">
+
+                    Back
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     LOADING OVERLAY
+     ===================================================== -->
+
+<div
+    id="loadingOverlay"
+    class="loading-overlay">
+
+    <div class="loading-box">
+
+        <div class="loader"></div>
+
+
+        <h3 id="loadingText">
+            Please Wait...
+        </h3>
+
+
+        <p>
+            Processing Request
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
