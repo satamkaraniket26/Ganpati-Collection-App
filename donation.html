@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Donation Collection</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body onload="checkLogin();">
+
+
+<div class="app-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        onclick="toggleSidebar()">
+    </div>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <img
+                src="logo.png"
+                alt="Mandal Logo">
+
+            <h2>
+                Ganesh Collection
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+
+            <a href="home.html">
+                Home
+            </a>
+
+
+            <a href="grand-dashboard.html">
+                Grand Dashboard
+            </a>
+
+
+            <!-- =================================================
+                 REPORTS
+            ================================================== -->
+
+            <button class="dropdown-btn">
+
+                Reports ▼
+
+            </button>
+
+
+            <div class="dropdown-container">
+
+
+                <a href="daily-report.html">
+                    Daily Report
+                </a>
+
+
+                <a href="society-summary.html">
+                    Society Summary
+                </a>
+
+
+                <a href="universal-search.html">
+                    Universal Search
+                </a>
+
+
+                <a href="export.html">
+                    Export
+                </a>
+
+
+            </div>
+
+
+            <a href="receipt-lookup.html">
+                Receipt Lookup
+            </a>
+
+
+            <a href="volunteer-dashboard.html">
+                Volunteer Dashboard
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <div class="topbar">
+
+
+            <button
+                class="menu-btn"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+
+            <h2>
+                Donation Collection
+            </h2>
+
+
+            <div
+                class="user-box"
+                id="welcomeUser">
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <div class="page-header">
+
+
+            <h2>
+                Donation Collection Entry
+            </h2>
+
+
+            <p>
+                Record donations received for the Ganesh Utsav Mandal.
+            </p>
+
+
+        </div>
+
+
+        <!-- =================================================
+             MAIN CARD
+        ================================================= -->
+
+        <div class="content-card donation-card">
+
+
+            <!-- =================================================
+                 DONOR INFORMATION
+            ================================================== -->
+
+            <div class="card-section">
+
+
+                <div class="section-heading">
+
+                    Donor Information
+
+                </div>
+
+
+                <div class="donation-form-grid">
+
+
+                    <!-- DONOR NAME -->
+
+                    <div class="form-group">
+
+
+                        <label>
+                            Donor Name *
+                        </label>
+
+
+                        <input
+                            id="donationDonorName"
+                            type="text"
+                            autocomplete="name"
+                            spellcheck="false"
+                            placeholder="Enter Donor Name">
+
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="form-group">
+
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+
+                        <input
+                            id="donationMobile"
+                            type="tel"
+                            placeholder="10 Digit Mobile Number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+
+
+                    </div>
+
+
+                    <!-- PURPOSE -->
+
+                    <div class="form-group donation-full-width">
+
+
+                        <label>
+                            Purpose *
+                        </label>
+
+
+                        <input
+                            id="donationPurpose"
+                            type="text"
+                            placeholder="Enter Donation Purpose">
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 DONATION DETAILS
+            ================================================== -->
+
+            <div class="card-section">
+
+
+                <div class="section-heading">
+
+                    Donation Details
+
+                </div>
+
+
+                <!-- PAYMENT MODE + STATUS -->
+
+                <div class="payment-details-grid">
+
+
+                    <!-- PAYMENT MODE -->
+
+                    <div class="form-group">
+
+
+                        <label>
+                            Payment Mode *
+                        </label>
+
+
+                        <select
+                            id="donationPaymentMode"
+                            onchange="handleDonationPaymentMode()">
+
+
+                            <option value="">
+                                Select Payment Mode
+                            </option>
+
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+
+                            <option value="UPI">
+                                UPI
+                            </option>
+
+
+                            <option value="Both">
+                                Both Cash + UPI
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+
+                        <label>
+                            Status
+                        </label>
+
+
+                        <select id="donationStatus">
+
+
+                            <option value="Paid">
+                                Paid
+                            </option>
+
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     CASH + UPI AMOUNTS
+                ================================================== -->
+
+                <div class="donation-amount-grid">
+
+
+                    <!-- CASH AMOUNT -->
+
+                    <div
+                        class="form-group donation-amount-box"
+                        id="donationCashAmountBox"
+                        style="display:none;">
+
+
+                        <label>
+                            Cash Amount *
+                        </label>
+
+
+                        <input
+                            id="donationCashAmount"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="Enter Cash Amount"
+                            oninput="calculateDonationTotal()">
+
+
+                    </div>
+
+
+                    <!-- UPI AMOUNT -->
+
+                    <div
+                        class="form-group donation-amount-box"
+                        id="donationUPIAmountBox"
+                        style="display:none;">
+
+
+                        <label>
+                            UPI Amount *
+                        </label>
+
+
+                        <input
+                            id="donationUPIAmount"
+                            type="number"
+                            min="0"
+                            step="1"
+                            placeholder="Enter UPI Amount"
+                            oninput="calculateDonationTotal()">
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     TOTAL DONATION
+                ================================================== -->
+
+                <div
+                    class="form-group donation-total-box">
+
+
+                    <label>
+                        Total Donation Amount
+                    </label>
+
+
+                    <input
+                        id="donationTotalAmount"
+                        type="number"
+                        readonly
+                        placeholder="₹ 0">
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 REMARK
+            ================================================== -->
+
+            <div class="card-section">
+
+
+                <div class="section-heading">
+
+                    Remark
+
+                </div>
+
+
+                <div class="form-group">
+
+
+                    <label for="donationRemark">
+
+                        Remark
+
+                    </label>
+
+
+                    <textarea
+                        id="donationRemark"
+                        name="remark"
+                        rows="3"
+                        placeholder="Enter remark (optional)"></textarea>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 WHATSAPP
+            ================================================== -->
+
+            <div class="checkbox-row donation-whatsapp">
+
+
+                <input
+                    type="checkbox"
+                    id="donationSendWhatsapp">
+
+
+                <label for="donationSendWhatsapp">
+
+                    Send receipt on WhatsApp
+
+                </label>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 BUTTONS
+            ================================================== -->
+
+            <div class="button-row donation-buttons">
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="location.href='home.html'">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="saveBtn"
+                    class="primary-btn"
+                    onclick="saveDonation()">
+
+                    Save Donation
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =====================================================
+     LOADING OVERLAY
+====================================================== -->
+
+<div
+    id="loadingOverlay"
+    class="loading-overlay">
+
+
+    <div class="loading-box">
+
+
+        <div class="loader">
+        </div>
+
+
+        <h3 id="loadingText">
+
+            Please Wait...
+
+        </h3>
+
+
+        <p>
+
+            Processing Request
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JSPDF
+====================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+
+
+<!-- =====================================================
+     APP JS
+====================================================== -->
+
+<script src="app.js">
+</script>
+
+
+</body>
+
+</html>
